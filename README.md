@@ -1,15 +1,16 @@
-# 🖼️ Batch Image Resizer & Converter
+# 🖼️ Image Resizer Tool (GUI Version)
 
-A simple Python tool to **resize** and **convert** multiple images in one go using [Pillow](https://pillow.readthedocs.io/).
+A simple Python desktop app to **resize images in bulk** using [Pillow](https://pillow.readthedocs.io/) and a Tkinter-based graphical interface.  
+No coding required — just choose folders, set dimensions, and click a button.
 
 ---
 
 ## 📌 Features
-- 📂 Batch process all images in a folder
-- 🔄 Preserve aspect ratio or force exact size
-- 🖼️ Support for JPEG, PNG, WEBP, BMP, TIFF
-- 📉 Reduce file sizes for faster web loading
-- ⚡ Easy to customize for your needs
+- 📂 Select input & output folders
+- 📏 Set custom width and height
+- 🔄 Batch process multiple images
+- 💾 Save in chosen format (JPEG/PNG)
+- 🎯 Beginner-friendly GUI
 
 ---
 
