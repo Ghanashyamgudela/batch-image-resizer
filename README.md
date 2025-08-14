@@ -24,6 +24,7 @@ python image_resizer_gui.py
 4. Click Resize Images
 
 -The resized images will appear in your output folder.
+
 ---
 ## 📦 Installation
 Make sure Python is installed, then install Pillow:
