@@ -13,7 +13,25 @@ No coding required — just choose folders, set dimensions, and click a button.
 - 🎯 Beginner-friendly GUI
 
 ---
+##🚀 Usage
 
+- Run the script:
+
+python image_resizer_gui.py
+
+
+- In the window:
+
+Choose the input folder (images to resize)
+
+Choose the output folder (where resized images will be saved)
+
+Enter width and height
+
+- Click Resize Images
+
+The resized images will appear in your output folder.
+---
 ## 📦 Installation
 Make sure Python is installed, then install Pillow:
 ```bash
