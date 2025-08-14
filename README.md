@@ -16,11 +16,13 @@ No coding required — just choose folders, set dimensions, and click a button.
 ##🚀 Usage
 - Run the script:
 python image_resizer_gui.py
+
 - In the window:
 1. Choose the input folder (images to resize)
 2. Choose the output folder (where resized images will be saved)
 3. Enter width and height
- 4. Click Resize Images
+4. Click Resize Images
+
 -The resized images will appear in your output folder.
 ---
 ## 📦 Installation
