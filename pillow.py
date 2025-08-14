@@ -1,48 +1,54 @@
 import os
+from tkinter import Tk, Label, Entry, Button, filedialog, StringVar
 from PIL import Image
 
-def batch_resize(
-    input_dir="images_input",
-    output_dir="images_output",
-    max_size=(800, 800),
-    output_format=None
-):
-   
+def choose_input():
+    folder = filedialog.askdirectory()
+    input_var.set(folder)
+
+def choose_output():
+    folder = filedialog.askdirectory()
+    output_var.set(folder)
+
+def resize_images():
+    input_dir = input_var.get()
+    output_dir = output_var.get()
+    width = int(width_var.get())
+    height = int(height_var.get())
     os.makedirs(output_dir, exist_ok=True)
-    
-    valid_ext = (".png", ".jpg", ".jpeg", ".webp", ".bmp", ".tiff")
-    
+
     for file in os.listdir(input_dir):
-        if not file.lower().endswith(valid_ext):
-            continue
-        
-        in_path = os.path.join(input_dir, file)
-        
-        try:
+        if file.lower().endswith((".jpg", ".jpeg", ".png", ".webp")):
+            in_path = os.path.join(input_dir, file)
             with Image.open(in_path) as img:
-              
-             img = img.resize(max_size, Image.LANCZOS)
+                img = img.resize((width, height), Image.LANCZOS)
+                base = os.path.splitext(file)[0]
+                out_path = os.path.join(output_dir, base + ".jpg")
+                img.save(out_path, "JPEG")
+    print("✅ Done!")
 
-                
-               
-            base = os.path.splitext(file)[0]
-            ext = output_format.lower() if output_format else img.format.lower()
-            out_path = os.path.join(output_dir, f"{base}.{ext}")
-            
-       
-            img.save(out_path, output_format if output_format else img.format)
-            print(f"✅ {file} → {out_path}")
-    
-        except Exception as e:
-            print(f"❌ Error with {file}: {e}")
+root = Tk()
+root.title("Image Resizer Tool")
 
-print("\n🎯 Batch processing complete!")
+input_var = StringVar()
+output_var = StringVar()
+width_var = StringVar(value="800")
+height_var = StringVar(value="800")
 
+Label(root, text="Input Folder").grid(row=0, column=0)
+Entry(root, textvariable=input_var, width=40).grid(row=0, column=1)
+Button(root, text="Browse", command=choose_input).grid(row=0, column=2)
 
-if __name__ == "__main__":
-    batch_resize(
-        input_dir="images_input",   
-        output_dir="images_output", 
-        max_size=(800, 800),         
-        output_format="JPEG"         
-    )
+Label(root, text="Output Folder").grid(row=1, column=0)
+Entry(root, textvariable=output_var, width=40).grid(row=1, column=1)
+Button(root, text="Browse", command=choose_output).grid(row=1, column=2)
+
+Label(root, text="Width").grid(row=2, column=0)
+Entry(root, textvariable=width_var).grid(row=2, column=1)
+
+Label(root, text="Height").grid(row=3, column=0)
+Entry(root, textvariable=height_var).grid(row=3, column=1)
+
+Button(root, text="Resize Images", command=resize_images).grid(row=4, column=1)
+
+root.mainloop()
